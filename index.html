@@ -1,11 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sourav Singh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sourav Singh | Portfolio</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --accent: #007BFF;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #eeeeee;
+      --accent: #66ccff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    header, section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    #toggle-mode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: var(--bg-color);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
-    <button> <a href="./contact.html">Contact Me</a></button>
+
+<button id="toggle-mode">Toggle Dark Mode</button>
+
+<header>
+  <h1>Sourav Singh</h1>
+  <p style="text-align:center;">Computer Science Engineering Student (Cloud Computing)</p>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <p>A dedicated Computer Science Engineering student at SRM Institute of Science and Technology, graduating in 2027. I specialize in Cloud Computing and enjoy working with modern web technologies.</p>
+  <p>I’m passionate about building scalable, dynamic, and decentralized web apps. I have a strong interest in cloud-native solutions and continuous learning in collaborative environments.</p>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <p>Proficient in HTML, CSS, JavaScript, Node.js, React, and PostgreSQL.</p>
+  <p>Knowledgeable in Web3 technologies and capable of building decentralized applications (DApps).</p>
+  <p>Strong understanding of full-stack development principles and modern workflows.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>Bank Management System</h3>
+      <p>A full-stack web app for managing users, accounts, and transactions. Built using Node.js and PostgreSQL.</p>
+    </div>
+    <div class="project-card">
+      <h3>Web3 Voting DApp</h3>
+      <p>Blockchain-based decentralized voting system using Ethereum and Solidity, with a React frontend.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-details">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:ss6015@srmist.edu.in">ss6015@srmist.edu.in</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/usersourav" target="_blank">Usersourav</a></p>
+  <p>GitHub: <a href="https://github.com/Usersourav" target="_blank">Usersourav</a></p>
+  <p>Phone No: <a href="tel:+919315220595">(+91)9315220595</a></p>
+  <a href="https://usersourav.github.io/Resume/" class="button" target="_blank">View Resume</a>
+</section>
+
+<section id="contact">
+  <h2>Contact Form</h2>
+  <form action="https://formspree.io/f/mayvgrln" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="_replyto" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button class="button" type="submit">Send Message</button>
+  </form>
+</section>
+
+<script>
+  const toggleBtn = document.getElementById("toggle-mode");
+  toggleBtn.onclick = () => {
+    document.body.classList.toggle("dark-mode");
+  };
+</script>
+
 </body>
 </html>
