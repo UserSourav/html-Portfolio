@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sourav Singh | Portfolio</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
   <style>
     :root {
-      --bg-light: #ffffff;
       --bg-dark: #1a1a1a;
-      --text-light: #111;
       --text-dark: #f1f1f1;
       --accent: #8EC3B0;
     }
@@ -18,126 +16,145 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
       transition: background-color 0.4s, color 0.4s;
     }
 
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    /* Loading Screen */
-    #loader {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #DEF5E5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.6s ease;
-}
-
-#loader.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loader-dots {
-  display: flex;
-  gap: 10px;
-}
-
-.loader-dots span {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #4d4d4d;
-  animation: bounce 1.2s infinite ease-in-out;
-}
-
-.loader-dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.loader-dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes bounce {
-  0%, 80%, 100% {
-    transform: scale(0);
-    opacity: 0.5;
-  }
-  40% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-
-    .toggle-dark {
+    #bgVideo {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      border: none;
-      font-size: 28px;
-      color: var(--text-light);
-      z-index: 999;
-      cursor: pointer;
-      transition: color 0.4s ease;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.4;
     }
 
-    body.dark .toggle-dark {
-      color: var(--text-dark);
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #DEF5E5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .loader-dots span {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #4d4d4d;
+      animation: bounce 1.2s infinite ease-in-out;
+    }
+
+    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeZoom {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes glowBorder {
+      0% {
+        box-shadow: 0 0 10px #8EC3B0, 0 0 20px #8EC3B0;
+      }
+      100% {
+        box-shadow: 0 0 20px #8EC3B0, 0 0 40px #8EC3B0;
+      }
     }
 
     .hero {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #DEF5E5, #ffffff);
-      transition: background 0.4s;
+      justify-content: space-between;
+      padding: 60px 40px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
     }
 
-    body.dark .hero {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    .hero-img {
+      flex: 1 1 45%;
+      max-width: 500px;
     }
 
-    .hero img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      opacity: 0;
+      transform: scale(0.85);
+      animation: fadeZoom 1.2s ease-out forwards, glowBorder 1.5s ease-in-out infinite alternate;
+      animation-delay: 0.5s;
     }
 
-    .hero h1 {
+    .hero-content {
+      flex: 1 1 50%;
+    }
+
+    .hero-content h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #8EC3B0;
+      width: 0;
+      animation:
+        typewriter 5s steps(30, end) forwards,
+        blink-caret 0.75s step-end infinite;
     }
 
-    .hero p {
+    .hero-content p {
       font-size: 1.2rem;
-      max-width: 600px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeZoom 1.2s ease-out forwards;
+      animation-delay: 3.2s;
     }
 
     .section {
       padding: 60px 20px;
       max-width: 1000px;
-      margin: auto;
+      margin: 20px auto;
     }
 
     .section h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 3rem;
       margin-bottom: 40px;
     }
 
@@ -148,7 +165,7 @@
     }
 
     .skill-card, .project-card {
-      background-color: #9ED5C5;
+      background-color: #36aa89;
       padding: 20px;
       border-radius: 12px;
       text-align: center;
@@ -193,13 +210,15 @@
 
     .button {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 14px 32px;
       background-color: #8EC3B0;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
+      font-size: 1.3rem;
+      transition: background-color 0.3s ease;
     }
 
     .button:hover {
@@ -213,10 +232,20 @@
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form textarea {
+      resize: vertical;
     }
   </style>
 </head>
 <body>
+
+<video autoplay muted loop id="bgVideo">
+  <source src="2.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
 
 <div id="loader">
   <div class="loader-dots">
@@ -224,27 +253,28 @@
   </div>
 </div>
 
-
-<button class="toggle-dark" onclick="toggleDark()" id="darkToggle">
-  <i class='bx bx-moon'></i>
-</button>
-
-<section class="hero" data-aos="zoom-in">
-  <img src="me.jpg" alt="Sourav Singh" />
-  <h1>Sourav Singh</h1>
-  <p>Computer Science Engineering Student specializing in Cloud Computing<br>Graduating from SRM Institute of Science and Technology in 2027.<br>I'm passionate about building scalable, dynamic, and decentralized web apps.</p>
+<section class="hero">
+  <div class="hero-img">
+    <img src="me.jpg" alt="Sourav Singh" />
+  </div>
+  <div class="hero-content">
+    <h1>Sourav Singh</h1>
+    <p>Computer Science Engineering Student specializing in Cloud Computing.<br>
+      Graduating from SRM Institute of Science and Technology in 2027.<br>
+      I'm passionate about building scalable, dynamic, and decentralized web apps.</p>
+  </div>
 </section>
+
 
 <section class="section skills" data-aos="fade-up">
   <h2>Skills</h2>
   <div class="skills-grid">
-    <!-- Skills (same as before) -->
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" /><p>HTML</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" /><p>CSS</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" /><p>JavaScript</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" /><p>Bootstrap</p></div>
     <div class="skill-card"><img src="https://img.icons8.com/?size=512&id=WoopfRcDj3RF&format=png" alt="Tailwind" /><p>Tailwind</p></div>
-  <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><p>MongoDB</p></div>
+    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><p>MongoDB</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" /><p>Express</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" /><p>React</p></div>
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" /><p>Node.js</p></div>
@@ -252,7 +282,6 @@
     <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /><p>Git</p></div>
   </div>
 </section>
-  
 
 <section class="section projects" data-aos="fade-up">
   <h2>Projects</h2>
@@ -285,34 +314,14 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+  AOS.init({ duration: 800, once: true });
+
   window.addEventListener('load', function () {
     const loader = document.getElementById('loader');
     loader.classList.add('fade-out');
     setTimeout(() => {
       loader.style.display = 'none';
     }, 700);
-  });
-</script>
-
-<script>
-  AOS.init({ duration: 800, once: true });
-
-  function toggleDark() {
-    const body = document.body;
-    const icon = document.getElementById('darkToggle').querySelector('i');
-    body.classList.toggle('dark');
-    if (body.classList.contains('dark')) {
-      icon.classList.replace('bx-moon', 'bx-sun');
-    } else {
-      icon.classList.replace('bx-sun', 'bx-moon');
-    }
-  }
-
-  window.addEventListener('load', function () {
-    document.getElementById('loader').classList.add('fade-out');
-    setTimeout(() => {
-      document.getElementById('loader').style.display = 'none';
-    }, 600);
   });
 </script>
 
