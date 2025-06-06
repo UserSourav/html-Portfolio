@@ -259,6 +259,52 @@
         padding: 40px 20px;
         text-align: center;
       }
+
+      .hero-img, .hero-content {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .section h2 {
+        font-size: 2.2rem;
+      }
+
+      .skills-grid, .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 16px;
+      }
+
+      .contact-icons {
+        flex-wrap: wrap;
+        gap: 30px;
+        font-size: 40px;
+        margin-top: 40px;
+      }
+
+      .button {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+      }
+
+      form input, form textarea {
+        font-size: 0.95rem;
+        padding: 8px;
+      }
+
+      .hero-img img {
+        border-radius: 20px;
+        max-width: 90%;
+        margin: auto;
+      }
     }
   </style>
 </head>
@@ -302,6 +348,7 @@
     <div class="skill-card" data-aos="fade-up" data-aos-delay="500"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /><p>Git</p></div>
   </div>
 </section>
+
 <section class="section projects" data-aos="fade-up">
   <h2>Projects</h2>
   <div class="projects-grid">
